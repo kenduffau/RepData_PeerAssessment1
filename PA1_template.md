@@ -16,7 +16,7 @@ The data was loaded from the user's R working directory which is separate from t
 
 ```r
 ## Unzip and Load the activity data
-unzip("C://Program Files/Git/Projects/DataScientistsToolbox/RepData_PeerAssessment1/activity.zip")
+unzip("C://Program Files/Git/Projects/RepData_PeerAssessment1/activity.zip")
 activityDataRaw <- read.csv("activity.csv", stringsAsFactors = FALSE)
 
 ## Ensure date variable is data class
@@ -35,7 +35,7 @@ dailySteps <- aggregate(steps ~ date, data = activityDataRaw, sum, na.action = N
 hist(dailySteps$steps, xlab = "Daily Steps", ylab = "Number of Days", main = "Daily Steps Frequency", col = "red")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-2-1.png)
+![](PA1_template_files/figure-html/dailyStepCount-1.png)
 
 ```r
 ## Calculate and store mean/median of data. Does not count days with NA.
@@ -73,7 +73,7 @@ plotInterval + geom_line(col = "red") +
     labs(x = "Intervals", y = "Avg # of Steps", title = "Average Number of Steps by Interval")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-3-1.png)
+![](PA1_template_files/figure-html/avgIntervalStepCount-1.png)
 
 ```r
 ## Calculate and store interval with maximum avg number of steps
@@ -133,7 +133,7 @@ dailyStepsImputed <- aggregate(steps ~ date, data = imputedActivityData, sum)
 hist(dailyStepsImputed$steps, xlab = "Daily Steps", ylab = "Number of Days", main = "Daily Steps Frequency", col = "red")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)
+![](PA1_template_files/figure-html/imputedDailyStepCount-1.png)
 
 Average and median steps were calculated and found to be very similar to the original findings for 2 likely reasons. First, the fact that NA values were not removed in the first run, and second because the imputation method chosen ensured that previously zero count days now had significant step counts. In fact, both the mean and median were found to be 10766.19, identical to the mean from the first run. Different decisions would have provided different results.
 
@@ -180,7 +180,7 @@ plotInterval + geom_line(col = "red") +
     labs(x = "Intervals", y = "Avg # of Steps", title = "Average Number of Steps by Interval")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-7-1.png)
+![](PA1_template_files/figure-html/imputedDataComparison-1.png)
 
 ```r
 ## End of script
